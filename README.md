@@ -19,4 +19,4 @@ For example: storage.yml runs the code storage.bicep. storage.bicep has a parame
 
 
 ## How to use this code?
-You can deploy the code by uploading your repository to Azure DevOps and create a pipeline. Use the azure-pipelines.yml as main pipeline file and the deployment should run smoothly from the Azure DevOps built pipeline.
+You can deploy the code by uploading your repository to Azure DevOps and create a pipeline. Use the azure-pipelines.yml as main pipeline file and the deployment should run smoothly from the Azure DevOps built/release pipeline.
