@@ -1,4 +1,4 @@
-# Data platform deployment IaC
+# Microsoft Azure Synapse Deployment
 The following code deploys a data platform on Microsoft Azure, with the corresponding required resources. The template deploys a synapse workspace, a storage account, a key vault and spark pools to run in the synapse workspace. It also contains powershell scripts to deploy triggers.
 
 > [!NOTE]  
