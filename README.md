@@ -1,7 +1,8 @@
 # Data platform deployment IaC
 The following code deploys a data platform on Microsoft Azure, with the corresponding required resources. The template deploys a synapse workspace, a storage account, a key vault and spark pools to run in the synapse workspace. It also contains powershell scripts to deploy triggers.
 
-!**The code assumes an existing vnet with a subnet.**
+> [!NOTE]  
+> Highlights information that users should take into account, even when skimming.
 
 # Layout
 Azure-pipelines.yml triggers the following pipelines
