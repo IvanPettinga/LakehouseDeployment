@@ -16,4 +16,5 @@ For each pipeline there is a corresponding bicep template and a parameter file. 
 For example: storage.yml runs the code storage.bicep. storage.bicep has a parameter file storage.json. The storage.bicep file runs a nested bicep file which deploys the resource. 
 
 Illustration of layout
+
 ![Github IaC drawio](https://github.com/user-attachments/assets/e90b07ce-cda3-46cc-97c0-e244801b2180)
