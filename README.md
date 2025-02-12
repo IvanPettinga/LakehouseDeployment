@@ -3,10 +3,13 @@ The following code deploys a data platform on Microsoft Azure, with the correspo
 
 # Layout
 Azure-pipelines.yml triggers the following pipelines
-  - storage.yml > bicep module > bicep resource
-  - kv.yml  > bicep module > bicep resource
-  - synapseworkspace.yml  > bicep module > bicep resource
-  - vm.yml  > bicep module > bicep resource
-  - sparkpools.yml  > bicep module > bicep resource
+  - storage.yml
+  - kv.yml 
+  - synapseworkspace.yml 
+  - vm.yml 
+  - sparkpools.yml
+
+For each pipeline there is a corresponding bicep template and a parameter file. The bicep template runs a module which deploys the actual resource.
+For example: storage.yml runs the code storage.bicep. storage.bicep has a parameter file storage.json. The storage.bicep file runs a nested bicep file which deploys the resource. 
 
  
