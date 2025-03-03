@@ -6,11 +6,16 @@ The following code deploys a data platform on Microsoft Azure, with the correspo
 
 ## Layout
 Azure-pipelines.yml triggers the following pipelines
+  - vm.yml
+  - kv.yml
+  - unami.yml
   - storage.yml
-  - kv.yml 
   - synapseworkspace.yml 
-  - vm.yml 
+  - acces.yml
   - sparkpools.yml
+
+> [!NOTE]  
+The order of execution is important for the initial deployment. When existing resources are being updated the order can be switched up or deployments can be isolated from eachother.
 
 For each pipeline there is a corresponding bicep template and a parameter file. The bicep template runs a module which deploys the actual resource.
 For example: storage.yml runs the code storage.bicep. storage.bicep has a parameter file storage.json. The storage.bicep file runs a nested bicep file which deploys the resource. 
