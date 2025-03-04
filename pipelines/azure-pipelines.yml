@@ -6,6 +6,10 @@ parameters:
   type: string
 
 # parameters for resources
+- name: deployUnami
+  type: boolean
+- name: deployKeyVault
+  type: boolean
 - name: deployStorage
   type: boolean
 
@@ -22,6 +26,8 @@ stages:
       - template: resources.yml
         parameters:
           environmentType: parameters.environment
+          deployUnami: ${{parameters.deployUnami}}
+          deployKeyVault: ${{parameters.deployKeyVault}}
           deployStorage: ${{parameters.deployStorage}}
 
 # deployment of BICEP template to test
@@ -31,6 +37,8 @@ stages:
       - template: resources.yml
         parameters:
           environmentType: parameters.environment
+          deployUnami: ${{parameters.deployUnami}}
+          deployKeyVault: ${{parameters.deployKeyVault}}
           deployStorage: ${{parameters.deployStorage}}
 
 # deployment of BICEP template to acc
@@ -40,6 +48,8 @@ stages:
       - template: resources.yml
         parameters:
           environmentType: parameters.environment
+          deployUnami: ${{parameters.deployUnami}}
+          deployKeyVault: ${{parameters.deployKeyVault}}
           deployStorage: ${{parameters.deployStorage}}
 
 
@@ -50,4 +60,6 @@ stages:
       - template: resources.yml
         parameters:
           environmentType: parameters.environment
+          deployUnami: ${{parameters.deployUnami}}
+          deployKeyVault: ${{parameters.deployKeyVault}}
           deployStorage: ${{parameters.deployStorage}}

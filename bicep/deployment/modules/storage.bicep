@@ -6,12 +6,12 @@ param keyVaultName string
 param containerName string
 param whitelistIP array
 
-@description('The storage account has a depency on the key vault for encryption')
+@description('The storage account has a dependency on the key vault for encryption')
 resource keyVault 'Microsoft.KeyVault/vaults@2023-07-01'existing = {
   name: keyVaultName
 }
 
-@description('The storage account has a depency on the key vault for encryption')
+@description('The storage account has a dependency on the key vault for encryption')
 resource cmkKey 'Microsoft.KeyVault/vaults/keys@2023-07-01' existing = {
   parent: keyVault
   name: customerManagedKey
