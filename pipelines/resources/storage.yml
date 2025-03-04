@@ -18,6 +18,6 @@ stages:
     azureResourceManagerConnection: $(serviceConnectionName)
     action: 'Create Or Update Resource Group'
     resourceGroupName: $(ResourceGroup)
-    templateLocation: 'AzureResourceManager/bicep/deploy_storage.bicep'
-    csmParametersFile: 'AzureResourceManager/parameters/storage.bicepparam'
+    templateLocation: 'bicep/deployment/deploy_storage.bicep'
+    csmParametersFile: 'bicep/parameters/storage.bicepparam'
     deploymentMode: 'Incremental'
