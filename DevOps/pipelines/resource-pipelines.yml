@@ -1,0 +1,11 @@
+# Start de resource YML pipeline
+
+# paraemters included resources
+# parameters for environment to deploy to
+
+# if included VM
+ # then run VM pipeline
+
+
+ # if included storage
+ # then run VM pipeline

@@ -1,0 +1,26 @@
+# This is the main pipeline which determines which environment you will deploy too
+parameters:
+ # Environment (dev/test/acc/prd)
+ # One for each bicep template
+  # Deploy virtual machine
+  # Deploy storage account
+  # Deploy etc.
+
+# These are the stages the pipeline deploys
+stages:
+
+# deployment of BICEP template to dev
+  # only if environment = dev
+  # pass parameters for bicep templates
+
+# deployment of BICEP template to test
+  # only if environment = test
+  # pass parameters for bicep templates
+
+# deployment of BICEP template to acceptance
+  # only if environment = acceptance
+  # pass parameters for bicep templates
+
+# deployment of BICEP template to production
+  # only if environment = production
+  # pass parameters for bicep templates
