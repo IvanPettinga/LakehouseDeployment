@@ -5,7 +5,8 @@
 
 # if included VM
  # then run VM pipeline
-
+ # reference to bicep module
 
  # if included storage
  # then run VM pipeline
+ #reference to bicep module
