@@ -1,5 +1,23 @@
 # run the storage.bicep template
 # parameters environment
 
-#referece the bicep module
-# reference the parameter file 
+parameters:
+- name: environment
+  type: string
+
+# Reference the variable group of the environment which it will be deployed in
+variables:
+- group: dwh_${{parameters.environment}}
+
+stages:
+
+# ARM template deployment of storage account
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: $(serviceConnectionName)
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: $(ResourceGroup)
+    templateLocation: 'AzureResourceManager/bicep/deploy_storage.bicep'
+    csmParametersFile: 'AzureResourceManager/parameters/storage.bicepparam'
+    deploymentMode: 'Incremental'

@@ -1,12 +1,18 @@
 # Start de resource YML pipeline
 
-# paraemters included resources
+# parameters included resources
 # parameters for environment to deploy to
+parameters:
+- name: environment
+  type: string
+- name: deployStorage
+  type: boolean
 
-# if included VM
- # then run VM pipeline
- # reference to bicep module
 
- # if included storage
- # then run VM pipeline
- #reference to bicep module
+stages: 
+
+ # if included storage run the storage pipeline
+- ${{ if eq(parameters.deployStorage, false) }}:
+  - template: resources/storage.yml
+    parameters:
+      environmentType: ${{parameters.environmentType}}

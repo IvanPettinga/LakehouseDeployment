@@ -1,27 +1,53 @@
 # This is the main pipeline which determines which environment you will deploy too
 
+# parameter for environment
 parameters:
- # Environment (dev/test/acc/prd)
- # One for each bicep template
-  # Deploy virtual machine
-  # Deploy storage account
-  # Deploy etc.
+- name: environment
+  type: string
 
-# These are the stages the pipeline deploys
+# parameters for resources
+- name: deployStorage
+  type: boolean
+
+pool:
+  vmImage: ubuntu-latest
+
+# deployment environments
 stages:
 
 # deployment of BICEP template to dev
-  # only if environment = dev
+- ${{ if eq(parameters.environment, "dev") }}:
+
   # pass parameters for bicep templates
+      - template: resources.yml
+        parameters:
+        environmentType: parameters.environment
+        deployStorage: ${{parameters.deployStorage}}
 
 # deployment of BICEP template to test
-  # only if environment = test
+- ${{ if eq(parameters.environment, "test") }}:
+
   # pass parameters for bicep templates
+      - template: resources.yml
+        parameters:
+        environmentType: parameters.environment
+        deployStorage: ${{parameters.deployStorage}}
 
 # deployment of BICEP template to acc
-  # only if environment = acc
+- ${{ if eq(parameters.environment, "acc") }}:
+
   # pass parameters for bicep templates
+      - template: resources.yml
+        parameters:
+        environmentType: parameters.environment
+        deployStorage: ${{parameters.deployStorage}}
+
 
 # deployment of BICEP template to prd
-  # only if environment = prd
+- ${{ if eq(parameters.environment, "prd") }}:
+
   # pass parameters for bicep templates
+      - template: resources.yml
+        parameters:
+        environmentType: parameters.environment
+        deployStorage: ${{parameters.deployStorage}}
