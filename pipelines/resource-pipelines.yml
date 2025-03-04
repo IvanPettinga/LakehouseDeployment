@@ -1,4 +1,4 @@
-# Start de resource YML pipeline
+# This pipeline will deploy the resources to the environment
 
 # parameters included resources
 # parameters for environment to deploy to

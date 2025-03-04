@@ -31,7 +31,7 @@ stages:
 - ${{ if eq(parameters.environment, "dev") }}:
 
   # pass parameters for bicep templates
-      - template: resources.yml
+      - template: resource-pipelines.yml
         parameters:
           environmentType: parameters.environment
           deployUnami: ${{parameters.deployUnami}}
@@ -45,7 +45,7 @@ stages:
 - ${{ if eq(parameters.environment, "tst") }}:
 
   # pass parameters for bicep templates
-      - template: resources.yml
+      - template: resource-pipelines.yml
         parameters:
           environmentType: parameters.environment
           deployUnami: ${{parameters.deployUnami}}
@@ -59,7 +59,7 @@ stages:
 - ${{ if eq(parameters.environment, "acc") }}:
 
   # pass parameters for bicep templates
-      - template: resources.yml
+      - template: resource-pipelines.yml
         parameters:
           environmentType: parameters.environment
           deployUnami: ${{parameters.deployUnami}}
@@ -74,7 +74,7 @@ stages:
 - ${{ if eq(parameters.environment, "prd") }}:
 
   # pass parameters for bicep templates
-      - template: resources.yml
+      - template: resource-pipelines.yml
         parameters:
           environmentType: parameters.environment
           deployUnami: ${{parameters.deployUnami}}
