@@ -21,8 +21,8 @@ stages:
   # pass parameters for bicep templates
       - template: resources.yml
         parameters:
-        environmentType: parameters.environment
-        deployStorage: ${{parameters.deployStorage}}
+          environmentType: parameters.environment
+          deployStorage: ${{parameters.deployStorage}}
 
 # deployment of BICEP template to test
 - ${{ if eq(parameters.environment, "test") }}:
@@ -30,8 +30,8 @@ stages:
   # pass parameters for bicep templates
       - template: resources.yml
         parameters:
-        environmentType: parameters.environment
-        deployStorage: ${{parameters.deployStorage}}
+          environmentType: parameters.environment
+          deployStorage: ${{parameters.deployStorage}}
 
 # deployment of BICEP template to acc
 - ${{ if eq(parameters.environment, "acc") }}:
@@ -39,8 +39,8 @@ stages:
   # pass parameters for bicep templates
       - template: resources.yml
         parameters:
-        environmentType: parameters.environment
-        deployStorage: ${{parameters.deployStorage}}
+          environmentType: parameters.environment
+          deployStorage: ${{parameters.deployStorage}}
 
 
 # deployment of BICEP template to prd
@@ -49,5 +49,5 @@ stages:
   # pass parameters for bicep templates
       - template: resources.yml
         parameters:
-        environmentType: parameters.environment
-        deployStorage: ${{parameters.deployStorage}}
+          environmentType: parameters.environment
+          deployStorage: ${{parameters.deployStorage}}
