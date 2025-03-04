@@ -1,0 +1,128 @@
+# Start de resource YML pipeline
+
+# parameters included resources
+# parameters for environment to deploy to
+parameters:
+- name: environment
+  type: string
+- name: deployUnami
+  type: boolean
+- name: deployKeyVault
+  type: boolean
+- name: deployStorage
+  type: boolean
+- name: deployVM
+  type: boolean
+- name: deploySynapse
+  type: boolean
+- name: deployAcces
+  type: boolean
+- name: deploySparkPool
+  type: boolean
+
+variables:
+- group: dwh_${{parameters.environment}}
+
+stages: 
+
+ # if included unami run the user assigned management identity pipeline
+- ${{ if eq(parameters.deployUnami, false) }}:
+
+  # ARM template deployment of unami account
+  - task: AzureResourceManagerTemplateDeployment@3
+    inputs:
+      deploymentScope: 'Resource Group'
+      azureResourceManagerConnection: $(serviceConnectionName)
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: $(ResourceGroup)
+      templateLocation: 'bicep/deployment/deploy_unami.bicep'
+      csmParametersFile: 'bicep/parameters/unami.bicepparam'
+      deploymentMode: 'Incremental'
+
+ # if included key vault run the key vault pipeline
+- ${{ if eq(parameters.deployKeyVault, false) }}:
+  
+  # ARM template deployment of key vault
+  - task: AzureResourceManagerTemplateDeployment@3
+    inputs:
+      deploymentScope: 'Resource Group'
+      azureResourceManagerConnection: $(serviceConnectionName)
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: $(ResourceGroup)
+      templateLocation: 'bicep/deployment/deploy_kv.bicep'
+      csmParametersFile: 'bicep/parameters/kv.bicepparam'
+      deploymentMode: 'Incremental'
+
+ # if included storage run the storage pipeline
+- ${{ if eq(parameters.deployStorage, false) }}:
+
+  # ARM template deployment of storage account
+  - task: AzureResourceManagerTemplateDeployment@3
+    inputs:
+      deploymentScope: 'Resource Group'
+      azureResourceManagerConnection: $(serviceConnectionName)
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: $(ResourceGroup)
+      templateLocation: 'bicep/deployment/deploy_storage.bicep'
+      csmParametersFile: 'bicep/parameters/storage.bicepparam'
+      deploymentMode: 'Incremental'
+
+    
+ # if included VM run the VM pipeline
+- ${{ if eq(parameters.deployVM, false) }}:
+
+  # ARM template deployment of VM
+  - task: AzureResourceManagerTemplateDeployment@3
+    inputs:
+      deploymentScope: 'Resource Group'
+      azureResourceManagerConnection: $(serviceConnectionName)
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: $(ResourceGroup)
+      templateLocation: 'bicep/deployment/deploy_VM.bicep'
+      csmParametersFile: 'bicep/parameters/VM.bicepparam'
+      deploymentMode: 'Incremental'
+
+   # if included Synapse run the Synapse pipeline
+- ${{ if eq(parameters.deploySynapse, false) }}:
+
+  # ARM template deployment of Synapse
+  - task: AzureResourceManagerTemplateDeployment@3
+    inputs:
+      deploymentScope: 'Resource Group'
+      azureResourceManagerConnection: $(serviceConnectionName)
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: $(ResourceGroup)
+      templateLocation: 'bicep/deployment/deploy_synapse.bicep'
+      csmParametersFile: 'bicep/parameters/synapse.bicepparam'
+      deploymentMode: 'Incremental'
+
+    
+ # if included Acces run the Acces pipeline
+- ${{ if eq(parameters.deployAcces, false) }}:
+
+  # ARM template deployment of Acces
+  - task: AzureResourceManagerTemplateDeployment@3
+    inputs:
+      deploymentScope: 'Resource Group'
+      azureResourceManagerConnection: $(serviceConnectionName)
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: $(ResourceGroup)
+      templateLocation: 'bicep/deployment/deploy_acces.bicep'
+      csmParametersFile: 'bicep/parameters/acces.bicepparam'
+      deploymentMode: 'Incremental'
+
+  # if included Sparkpool run the SparkPool pipeline
+- ${{ if eq(parameters.deploySparkPool, false) }}:
+
+  # ARM template deployment of SparkPool
+  - task: AzureResourceManagerTemplateDeployment@3
+    inputs:
+      deploymentScope: 'Resource Group'
+      azureResourceManagerConnection: $(serviceConnectionName)
+      action: 'Create Or Update Resource Group'
+      resourceGroupName: $(ResourceGroup)
+      templateLocation: 'bicep/deployment/deploy_sparkpool.bicep'
+      csmParametersFile: 'bicep/parameters/sparkpool.bicepparam'
+      deploymentMode: 'Incremental'
+
+    

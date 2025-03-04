@@ -12,6 +12,14 @@ parameters:
   type: boolean
 - name: deployStorage
   type: boolean
+- name: deployVM
+  type: boolean
+- name: deploySynapse
+  type: boolean
+- name: deployAcces
+  type: boolean
+- name: deploySparkPool
+  type: boolean
 
 pool:
   vmImage: ubuntu-latest
@@ -28,7 +36,10 @@ stages:
           environmentType: parameters.environment
           deployUnami: ${{parameters.deployUnami}}
           deployKeyVault: ${{parameters.deployKeyVault}}
-          deployStorage: ${{parameters.deployStorage}}
+          deployVM: ${{parameters.deployVM}}
+          deploySynapse: ${{parameters.deploySynapse}}
+          deployAcces: ${{parameters.deployAcces}}
+          deploySparkPool: ${{parameters.deploySparkPool}}
 
 # deployment of BICEP template to tst
 - ${{ if eq(parameters.environment, "tst") }}:
@@ -39,7 +50,10 @@ stages:
           environmentType: parameters.environment
           deployUnami: ${{parameters.deployUnami}}
           deployKeyVault: ${{parameters.deployKeyVault}}
-          deployStorage: ${{parameters.deployStorage}}
+          deployVM: ${{parameters.deployVM}}
+          deploySynapse: ${{parameters.deploySynapse}}
+          deployAcces: ${{parameters.deployAcces}}
+          deploySparkPool: ${{parameters.deploySparkPool}}
 
 # deployment of BICEP template to acc
 - ${{ if eq(parameters.environment, "acc") }}:
@@ -50,7 +64,10 @@ stages:
           environmentType: parameters.environment
           deployUnami: ${{parameters.deployUnami}}
           deployKeyVault: ${{parameters.deployKeyVault}}
-          deployStorage: ${{parameters.deployStorage}}
+          deployVM: ${{parameters.deployVM}}
+          deploySynapse: ${{parameters.deploySynapse}}
+          deployAcces: ${{parameters.deployAcces}}
+          deploySparkPool: ${{parameters.deploySparkPool}}
 
 
 # deployment of BICEP template to prd
@@ -62,4 +79,7 @@ stages:
           environmentType: parameters.environment
           deployUnami: ${{parameters.deployUnami}}
           deployKeyVault: ${{parameters.deployKeyVault}}
-          deployStorage: ${{parameters.deployStorage}}
+          deployVM: ${{parameters.deployVM}}
+          deploySynapse: ${{parameters.deploySynapse}}
+          deployAcces: ${{parameters.deployAcces}}
+          deploySparkPool: ${{parameters.deploySparkPool}}
