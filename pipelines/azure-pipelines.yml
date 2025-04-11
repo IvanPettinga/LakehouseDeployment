@@ -1,6 +1,6 @@
 # This is the main pipeline which determines which environment you will deploy too
 
-# parameter for environment
+# parameter for environment either dev/tst/acc or prd
 parameters:
 - name: environment
   type: string
